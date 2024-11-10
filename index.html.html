@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Dancing Script', cursive, sans-serif;
+            background: linear-gradient(to top left, #ffaad4, #ffc3e7);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Background 3D Parallax Effect */
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagonal-stripes-light.png');
+            background-size: cover;
+            z-index: -1;
+            filter: blur(5px);
+            transform: scale(1.2);
+            animation: moveBg 20s linear infinite;
+        }
+
+        /* Gradient Overlay for Depth */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        /* Main Title */
+        h1 {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(255, 255, 255, 0.8);
+            animation: fadeIn 2s ease-out;
+            z-index: 2;
+            margin-bottom: 10px;
+        }
+
+        /* Sub Message with Hover Effects */
+        .message {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+            max-width: 800px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInText 3s ease-out 1s forwards;
+            line-height: 1.7;
+            transform: translateY(50px);
+            z-index: 2;
+            transition: all 0.3s ease-in-out;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .message:hover {
+            transform: translateY(-10px);
+            color: #ff8f8f;
+        }
+
+        /* Heart Animation */
+        .heart {
+            font-size: 80px;
+            animation: heartbeat 1.5s infinite;
+            color: #ff4d6d;
+            z-index: 2;
+            margin-top: 20px;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            animation: confettiFall 3s infinite linear;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Particle Animation for Glitter Effect */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .particles .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: particleMovement 6s infinite;
+        }
+
+        /* Fireworks Animation */
+        .fireworks {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ff4d6d;
+            animation: fireworkExplosion 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        @keyframes particleMovement {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(40px, 40px); }
+            100% { transform: translate(0, 100vh); }
+        }
+
+        @keyframes fireworkExplosion {
+            0% { opacity: 1; transform: scale(0.5); }
+            100% { opacity: 0; transform: scale(3); }
+        }
+
+        @keyframes moveBg {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); }
+        }
+
+        /* Cloud Animation for Softness */
+        .clouds {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .clouds img {
+            width: 100px;
+            opacity: 0.7;
+            animation: moveClouds 12s infinite linear;
+        }
+
+        .clouds img:nth-child(1) { top: 10%; left: 5%; animation-duration: 10s; }
+        .clouds img:nth-child(2) { top: 25%; left: 55%; animation-duration: 12s; }
+        .clouds img:nth-child(3) { top: 50%; left: 30%; animation-duration: 14s; }
+
+        @keyframes moveClouds {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Animation -->
+    <div class="bg"></div>
+
+    <!-- Confetti -->
+    <div class="confetti">
+        <div style="left: 10%; animation-duration: 4s;"></div>
+        <div style="left: 30%; animation-duration: 5s;"></div>
+        <div style="left: 50%; animation-duration: 6s;"></div>
+        <div style="left: 70%; animation-duration: 4.5s;"></div>
+    </div>
+
+    <!-- Fireworks -->
+    <div class="fireworks">
+        <div class="firework" style="left: 20%; animation-duration: 2s;"></div>
+        <div class="firework" style="left: 50%; animation-duration: 2s;"></div>
+        <div class="firework" style="left: 80%; animation-duration: 2s;"></div>
+    </div>
+
+    <!-- Main Title -->
+    <h1>🎈Happy Birthday, My Love!🎈</h1>
+
+    <!-- Heart Animation -->
+    <div class="heart">❤️</div>
+
+    <!-- Personal Birthday Message -->
+    <div class="message">
+        Today is your special day, enjoy ur day with full of happinees. i waited a lot for this day kanna<br>
+        e roju ninnu challa miss avuthanu.nitho vunna prathi moment u miracle.nv na life the bestest person.<br>
+        The type of love u show towards me is unconditional oka father chupinche care love support antha chupisthava<br>
+        Wishing you a magical, love-filled birthday, my heart's greatest treasure! 🌟 <br>
+		I LOVE YOU SO MUCH KANNA ❤️............
+    </div>
+
+    <!-- Particles for Glitter Effect -->
+    <div class="particles">
+        <div class="particle" style="top: 10%; left: 5%; animation-duration: 6s;"></div>
+        <div class="particle" style="top: 50%; left: 30%; animation-duration: 5s;"></div>
+        <div class="particle" style="top: 70%; left: 70%; animation-duration: 7s;"></div>
+    </div>
+
+</body>
+</html>
